@@ -2,9 +2,18 @@ from abc import ABC, abstractmethod
 
 class Shape(ABC):
     def __init__(self, x: float = 0, y: float = 0):
-        self.x = x
-        self.y = y
-    
+        self._x = x
+        self._y = y
+
+    # make getter private (public: read_only)
+    @property
+    def x(self) -> float:
+        return self._x
+
+    @property
+    def y(self) -> float:
+        return self._y
+
     # abstract properties 
     @property
     @abstractmethod
@@ -41,14 +50,14 @@ class Shape(ABC):
     def translate(self, dx: float, dy: float):
         if not isinstance(dx, (int, float)) or not isinstance(dy, (int, float)):
             raise TypeError("dx and dy must be numeric values.")
-        self.x += dx
-        self.dy += dy 
+        self._x += dx
+        self._y += dy 
 
     # representations part 
 
     def __repr__(self):
-        return f"{self,__class__.__name__}(x={self.x}, y={self.y})"
+        return f"{self,__class__.__name__}(x={self._x}, y={self._y})"
     
     def __str__(self):
-        return f"{self.__class__.__name__} centerd at ({self.x}, {self.y})"
+        return f"{self.__class__.__name__} centerd at ({self._x}, {self._y})"
     
