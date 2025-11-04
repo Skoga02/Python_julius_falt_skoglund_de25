@@ -45,7 +45,7 @@ class Shape(ABC):
     def __ge__(self, other): 
         return not self < other
     
-    # translating part of the code 
+    # tranlsating part of the code is to enable a change of cordinates (x, y) for a class
     
     def translate(self, dx: float, dy: float):
         if not isinstance(dx, (int, float)) or not isinstance(dy, (int, float)):
@@ -56,8 +56,8 @@ class Shape(ABC):
     # representations part 
 
     def __repr__(self):
-        return f"{self,__class__.__name__}(x={self._x}, y={self._y})"
+        return f"{self.__class__.__name__}(x={self._x}, y={self._y})"
     
     def __str__(self):
-        return f"{self.__class__.__name__} centerd at ({self._x}, {self._y})"
+        return f"{self.__class__.__name__} centered at ({self._x}, {self._y})"
     
