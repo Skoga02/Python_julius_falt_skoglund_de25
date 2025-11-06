@@ -1,3 +1,4 @@
+from pytest import raises
 from circle import Circle 
 from rectangle import Rectangle 
 
@@ -15,7 +16,7 @@ print(circle1.x, circle1.y)
 circle3 = Circle(radius=3)
 print(circle3 >= circle1)
 
-
-circle4 = Circle(radius="5")
-
-# Test are fine and results are as expected 
+try:
+    circle4 = Circle(radius="5")
+except TypeError:
+    print("Radius must be a numerci value")
