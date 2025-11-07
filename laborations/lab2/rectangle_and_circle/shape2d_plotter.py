@@ -27,6 +27,7 @@ class Shape2d_plotter:
         fig, ax = plt.subplots()
 
         for shape in self._shapes:
+            # Handle circle objects
             if isinstance(shape, Circle):
                 patch = CirclePatch(
                     (shape.x, shape.y),
@@ -38,7 +39,7 @@ class Shape2d_plotter:
                 ax.add_patch(patch)
                 if show_center:
                     ax.plot(shape.x, shape.y, 'ro')
-
+            # Handle rectagnle objects
             elif isinstance(shape, Rectangle):
                 patch = RectPatch(
                     (shape.x - shape.width / 2, shape.y - shape.height / 2),
@@ -49,12 +50,14 @@ class Shape2d_plotter:
                     linewidth=2
                 )
                 ax.add_patch(patch)
+                # Plot center point of shape 
                 if show_center:
                     ax.plot(shape.x, shape.y, 'ro')
 
         all_x = [shape.x for shape in self._shapes]
         all_y = [shape.y for shape in self._shapes]
         if all_x and all_y:
+            # Kordinatsystemets layout
             x_min = min(all_x) - 5
             x_max = max(all_x) + 5
             y_min = min(all_y) - 5
