@@ -1,4 +1,5 @@
 # Information
+This is a class taught at Stockholms Tekniska Institut (STI).
 
 ## Subfolder in this repo 
 - code_alongs
